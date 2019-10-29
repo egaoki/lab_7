@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Test AJAX page</title>
+  <title>Test</title>
   <link rel="stylesheet" type="text/css" href="./lab_styles.css">
 </head>
 
@@ -16,16 +16,24 @@
     </div>
   </div>
   <script>
+
+
     function loadData() {
-      fetch('ajax_sample.json')
+      fetch('https://api.umd.io/v0/bus/routes')
         .then(res => res.json())
         .then(res => {
-          // you can now work in this area
-
+        console.log(res);
           return res;
         })
-        .then(data => document.querySelector(".content").innerText = data);
+        .then(res => res.map(c => c.title + "" + c.route_id))
+        .then(res => document.querySelector(".content").innerText = res);
+
+
+        //.then(res => document.querySelector(".content").innerText = res);
+
+
     }
+
   </script>
 </body>
 
